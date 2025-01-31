@@ -1,0 +1,7 @@
+{
+  "name": "modern-ui-cards",
+  "content_in_root": false,
+  "render_readme": true,
+  "filename": "modern-ui-cards.js",
+  "homeassistant": "2024.1.0"
+}

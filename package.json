@@ -1,0 +1,50 @@
+{
+  "name": "modern-ui-cards",
+  "version": "0.1.0",
+  "description": "Modern UI cards for lovelace",
+  "main": "dist/modern-ui-cards.js",
+  "scripts": {
+    "build": "npm run lint && npm run rollup",
+    "lint": "eslint src/*.ts",
+    "rollup": "rollup -c",
+    "watch": "rollup -c --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyaneous/modern-ui-cards.git"
+  },
+  "keywords": [
+    "lovelace"
+  ],
+  "author": "lupinglade",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cyaneous/modern-ui-cards/issues"
+  },
+  "homepage": "https://github.com/cyaneous/modern-ui-cards/#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-import": "^2.31.0",
+    "npm": "^11.0.0",
+    "rollup": "^4.32.0",
+    "ts-lit-plugin": "^2.0.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.21.0"
+  },
+  "dependencies": {
+    "home-assistant-js-websocket": "^9.4.0",
+    "lit": "^3.2.1",
+    "lit-element": "^4.1.1",
+    "lit-html": "^3.2.1"
+  }
+}
