@@ -1,3 +1,4 @@
+import { HassEntity } from "home-assistant-js-websocket";
 import { fireEvent } from "./hass/common/dom/fire_event";
 
 export class Helper {
@@ -5,7 +6,7 @@ export class Helper {
     return entityId.substring(0, entityId.indexOf('.'))
   }
 
-  static isActiveState(entity): boolean {
+  static isActiveState(entity: HassEntity): boolean {
     const state = entity.state;
     switch (Helper.domain(entity.entity_id)) {
       case 'group':
@@ -47,7 +48,7 @@ export class Helper {
     }
   }
 
-  static stateColor(entity): string {
+  static stateColor(entity: HassEntity): string {
     const state = entity.state;
     switch (Helper.domain(entity.entity_id)) {
       case 'automation':
