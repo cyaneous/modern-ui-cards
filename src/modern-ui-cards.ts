@@ -2,6 +2,7 @@ export { HeaderCard } from './cards/header-card';
 export { ChipCard } from './cards/chip-card';
 export { AreaCard } from './cards/area-card';
 export { EntityCard } from './cards/entity-card';
+export { WeatherCard } from './cards/weather-card';
 
 const MUI_VERSION = '0.1.0';
 
@@ -43,4 +44,11 @@ w.customCards.push({
   name: 'Modern Entity Card',
   preview: true,
   description: 'A modern entity card',
+});
+
+w.customCards.push({
+  type: 'modern-weather-card',
+  name: 'Modern Weather Card',
+  preview: true,
+  description: 'A modern weather card',
 });

@@ -52,7 +52,7 @@ export class AreaCardEditor extends LitElement implements LovelaceCardEditor {
   };
   
   private valueChanged(ev: CustomEvent): void {
-    fireEvent(this, "config-changed", { config: ev.detail.value });
+    fireEvent(this, 'config-changed', { config: ev.detail.value });
   }
   
   setConfig(config) {
