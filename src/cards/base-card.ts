@@ -30,10 +30,10 @@ export class BaseCard extends LitElement {
     return {
       grid_columns: 2,
       grid_min_columns: 1,
-      grid_max_columns: 2,
+      // grid_max_columns: 2,
       grid_rows: 3,
       grid_min_rows: 3,
-      grid_max_rows: 3,
+      // grid_max_rows: 3,
     };
   }
 
