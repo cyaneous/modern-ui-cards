@@ -8,6 +8,7 @@ export { EntityCardEditor } from './entity-card-editor';
 
 export interface EntityCardConfig {
   entity?: string;
+  name?: string;
 }
 
 @customElement('modern-entity-card')
@@ -24,8 +25,9 @@ export class EntityCard extends BaseCard {
 
   get name(): string {
     const friendlyName = this.entity.attributes.friendly_name;
+    const customName = this.config.name;
     let areaId: string | null = null;
-    if (friendlyName) {
+    if (!customName && friendlyName) {
       const entity = this.hass.entities[this.config.entity!];
       if (entity.area_id) {
         areaId = entity.area_id;
@@ -39,7 +41,7 @@ export class EntityCard extends BaseCard {
           return friendlyName.replace(area.name + ' ', '');
       }
     }
-    return friendlyName || this.entity.entity_id;
+    return customName || friendlyName || this.entity.entity_id;
   }
 
   get status(): string {

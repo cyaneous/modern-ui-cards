@@ -8,7 +8,7 @@ import { EntityCardConfig } from './entity-card';
 
 const SCHEMA: HaFormSchema[] = [
   { name: 'entity', selector: { entity: {} } },
-  // { name: "name", selector: { text: {} } },
+  { name: "name", selector: { text: {} } },
   // {
   //   type: "grid",
   //   name: "",
@@ -48,6 +48,11 @@ export class EntityCardEditor extends LitElement implements LovelaceCardEditor {
   private computeLabel = (schema: HaFormSchema) => {
     // const customLocalize = setupCustomlocalize(this.hass!);
     
+    switch (schema.name) {
+      case 'entity': return 'Entity';
+      case 'name': return 'Name';
+      default: break;
+    }
     // if (GENERIC_LABELS.includes(schema.name)) {
     //   return customLocalize(`editor.card.generic.${schema.name}`);
     // }

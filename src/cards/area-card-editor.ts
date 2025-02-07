@@ -8,6 +8,7 @@ import { AreaCardConfig } from './area-card';
 
 const SCHEMA: HaFormSchema[] = [
   { name: 'area', selector: { area: {} } },
+  { name: "name", selector: { text: {} } },
   { name: 'path', selector: { navigation: {} } },
   { name: 'temperature_sensor', selector: { entity: { domain: ['sensor'], filter: { device_class: ['temperature'] } } } },
   { name: 'humidity_sensor', selector: { entity: { domain: ['sensor'], filter: { device_class: ['humidity'] } } } },
@@ -38,6 +39,7 @@ export class AreaCardEditor extends LitElement implements LovelaceCardEditor {
     
     switch (schema.name) {
       case 'area': return 'Area';
+      case 'name': return 'Name';
       case 'path': return 'Navigation Path';
       case 'temperature_sensor': return 'Temperature Sensor';
       case 'humidity_sensor': return 'Humidity Sensor';

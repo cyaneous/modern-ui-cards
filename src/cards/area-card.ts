@@ -8,6 +8,7 @@ export { AreaCardEditor } from './area-card-editor';
 
 export interface AreaCardConfig {
   area?: string;
+  name?: string;
   path?: string;
   temperature_sensor?: string;
   humidity_sensor?: string;
@@ -22,7 +23,7 @@ export class AreaCard extends BaseCard {
   }
 
   get name() {
-    return this.hass.areas[this.config.area!].name || '?';
+    return this.config.name || this.hass.areas[this.config.area!].name || '?';
   }
 
   get status() {
