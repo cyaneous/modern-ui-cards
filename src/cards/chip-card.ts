@@ -182,8 +182,8 @@ export class ChipCard extends LitElement {
   getLayoutOptions() {
     return {
       grid_columns: 'full',
-      grid_rows: 1,
-      grid_max_rows: 1,
+      grid_rows: 1.5,
+      grid_max_rows: 1.5,
     };
   }
 
@@ -195,8 +195,8 @@ export class ChipCard extends LitElement {
     return {
       chips: [
         {
-            type: 'entity',
-            entity: 'sun.sun',
+          type: 'entity',
+          entity: 'sun.sun',
         } as EntityChipConfig
       ],
       statusbar: false,
@@ -222,17 +222,18 @@ export class ChipCard extends LitElement {
         cursor: default;
       }
       .chip {
-        margin: 0px 8px;
-        font-size: 11px;
-        font-weight: 700;
+        margin: 8px 8px;
+        font-size: medium;
+        font-weight: 600;
         white-space: nowrap;
         cursor: pointer;
       }
       #chips:not([statusbar]) .chip {
-        border-radius: var(--border-radius);
+        font-size: large;
+        border-radius: 3vw;
         background: var(--ha-card-background);
         box-shadow: var(--ha-card-box-shadow);
-        padding: 8px 10px;
+        padding: 16px 16px;
         margin: 0px 4px;
       }
       #chips:not([statusbar]) .chip:first-child {
@@ -243,8 +244,7 @@ export class ChipCard extends LitElement {
         transition: none;
       }
       .chip .icon {
-        --mdc-icon-size: 16px;
-        vertical-align: 0.5px;
+        --mdc-icon-size: 24px;
       }
       .chip .label {
         margin-left: 4px;

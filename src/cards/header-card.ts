@@ -58,8 +58,7 @@ export class HeaderCard extends LitElement {
   getLayoutOptions() {
     return {
       grid_columns: 'full',
-      grid_max_columns: 12,
-      grid_rows: 1.5,
+      grid_rows: 12,
       grid_max_rows: 1.5,
     };
   }
@@ -89,6 +88,7 @@ export class HeaderCard extends LitElement {
       #subtitle {
         margin: 8px 0px;
         font-weight: 500;
+        font-size: large;
         color: var(--secondary-text-color);
       }
     `;

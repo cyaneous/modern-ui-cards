@@ -28,10 +28,10 @@ export class BaseCard extends LitElement {
   // The rules for sizing your card in the grid in sections view
   getLayoutOptions() {
     return {
-      grid_columns: 2,
+      grid_columns: 2.5,
       grid_min_columns: 1,
       // grid_max_columns: 2,
-      grid_rows: 3,
+      grid_rows: 4,
       grid_min_rows: 3,
       // grid_max_rows: 3,
     };
@@ -81,29 +81,29 @@ export class BaseCard extends LitElement {
       }
       #icon {
         grid-area: icon;
-        --mdc-icon-size: 32px;
+        --mdc-icon-size: 48px;
       }
-      #icon[rotating] {
+      ha-state-icon[rotating] {
         animation: spin 1s linear infinite;
         display: inline-flex;
       }
       #name {
         grid-area: name;
-        font-size: 16px;
-        font-weight: 600;
-        padding: 4px 0px;
-        border-top: 1px dotted var(--disabled-text-color);
-        border-bottom: 1px dotted var(--disabled-text-color);
+        font-size: x-large;
+        font-weight: 500;
+        padding: 8px 0px;
+        border-top: 2px dotted var(--disabled-text-color);
+        border-bottom: 2px dotted var(--disabled-text-color);
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
       }
       #status {
         grid-area: status;
-        font-size: 14px;
-        line-height: 14px;
-        font-weight: 500;
-        padding-top: 4px;
+        font-size: large;
+        line-height: large;
+        font-weight: 400;
+        padding-top: 8px;
         color: var(--disabled-text-color);
         text-overflow: ellipsis;
         white-space: nowrap;

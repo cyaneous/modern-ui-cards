@@ -53,9 +53,9 @@ export class AreaCard extends BaseCard {
         <div id="content">
           <div id="icon">
             <ha-icon
-                icon=${this.icon}
-                style="color: ${this.iconColor};"
-              ></ha-icon>
+              icon=${this.icon}
+              style="color: ${this.iconColor};"
+            ></ha-icon>
           </div>
           <div id="name">${this.name}</div>
           <div id="status">${this.status}</div>
