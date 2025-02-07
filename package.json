@@ -1,6 +1,6 @@
 {
   "name": "modern-ui-cards",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Modern UI cards for lovelace",
   "main": "dist/modern-ui-cards.js",
   "scripts": {
