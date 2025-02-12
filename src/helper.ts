@@ -43,6 +43,8 @@ export class Helper {
         return state == 'active';
       case 'vacuum':
         return !['idle', 'docked', 'paused'].includes(state);
+      case 'valve':
+        return state != 'closed';
       default:
         return true;
     }
@@ -84,6 +86,9 @@ export class Helper {
         break;
       case 'switch':
         if (Helper.isActiveState(entity)) return 'var(--light-green-color)';
+        break;
+      case 'valve':
+        if (Helper.isActiveState(entity)) return 'var(--light-blue-color)';
         break;
       default:
         break;
