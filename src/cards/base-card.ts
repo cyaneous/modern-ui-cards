@@ -16,7 +16,7 @@ export class BaseCard extends LitElement {
   get iconColor(): string {
     return 'var(--state-icon-color)';
   }
-
+  
   // Sizing
 
   // The height of your card. Home Assistant uses this to automatically

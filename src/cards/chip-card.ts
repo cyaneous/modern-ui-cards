@@ -85,7 +85,7 @@ export class ChipCard extends LitElement {
           .stateObj=${entity}
           .hass=${this.hass}
           ?data-domain=${Helper.domain(entity.entity_id)}
-        ></ha-state-icon>
+          ></ha-state-icon>
         <span class="label">${this.statusForEntity(entity)}</span>
       </span>
     `;
