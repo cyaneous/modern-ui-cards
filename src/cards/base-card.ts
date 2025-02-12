@@ -84,6 +84,7 @@ export class BaseCard extends LitElement {
       ha-state-icon[rotating] {
         animation: spin 1s linear infinite;
         display: inline-flex;
+        transform-origin: 49% 50%;
       }
       #name {
         grid-area: name;
