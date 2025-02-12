@@ -1,9 +1,11 @@
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+
 import { HomeAssistant } from '../hass/types';
+import { LovelaceCardEditor } from "../hass/panels/lovelace/types";
+
 import { Helper } from '../helper';
 import { BaseCard } from './base-card';
-import { LovelaceCardEditor } from "../hass/panels/lovelace/types";
 export { AreaCardEditor } from './area-card-editor';
 
 export interface AreaCardConfig {

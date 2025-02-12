@@ -1,8 +1,10 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+
 import { HomeAssistant } from '../hass/types';
+import { LovelaceCardEditor, LovelaceLayoutOptions } from "../hass/panels/lovelace/types";
+
 import { Helper } from '../helper';
-import { LovelaceCardEditor } from "../hass/panels/lovelace/types";
 export { ChipCardEditor } from './chip-card-editor';
 
 export interface ChipCardConfig {
@@ -179,7 +181,7 @@ export class ChipCard extends LitElement {
   }
 
   // The rules for sizing your card in the grid in sections view
-  getLayoutOptions() {
+  getLayoutOptions(): LovelaceLayoutOptions {
     return {
       grid_columns: 'full',
       grid_rows: 1.5,

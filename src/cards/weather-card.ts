@@ -2,7 +2,9 @@
 
 import { html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+
 import { HomeAssistant } from '../hass/types';
+import { LovelaceCardEditor, LovelaceLayoutOptions } from "../hass/panels/lovelace/types";
 // import {
 //   getForecast,
 //   getSecondaryWeatherAttribute,
@@ -13,9 +15,9 @@ import { HomeAssistant } from '../hass/types';
 //   weatherAttrIcons,
 //   weatherSVGStyles,
 // } from "../hass/data/weather";
+
 import { Helper } from '../helper';
 import { BaseCard } from './base-card';
-import { LovelaceCardEditor } from "../hass/panels/lovelace/types";
 export { WeatherCardEditor } from './weather-card-editor';
 
 export interface WeatherCardConfig {
@@ -90,7 +92,7 @@ export class WeatherCard extends BaseCard {
     `;
   }
 
-  getLayoutOptions() {
+  getLayoutOptions(): LovelaceLayoutOptions {
     return {
       grid_columns: 4,
       grid_min_columns: 4,

@@ -1,9 +1,11 @@
-import { LitElement, html, css, nothing } from 'lit';
+import { LitElement, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+
 import { HomeAssistant } from '../hass/types';
 import { fireEvent } from "../hass/common/dom/fire_event";
 import { LovelaceCardEditor } from "../hass/panels/lovelace/types";
 import { HaFormSchema } from '../hass/components/ha-form/types';
+
 import { EntityCardConfig } from './entity-card';
 
 const SCHEMA: HaFormSchema[] = [
