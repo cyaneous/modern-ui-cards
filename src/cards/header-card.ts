@@ -66,6 +66,31 @@ export class HeaderCard extends LitElement {
     };
   }
 
+  public static async getConfigForm() {
+    const schema = [
+      { name: "title", selector: { text: {} } },
+      { name: 'title_entity', selector: { entity: {} } },
+      { name: "subtitle", selector: { text: {} } },
+      { name: 'subtitle_entity', selector: { entity: {} } },
+    ];
+
+    const assertConfig = (config) => {
+
+    };
+
+    const computeLabel = (schema, localize) => {
+      switch (schema.name) {
+        default: return localize(`ui.panel.lovelace.editor.card.generic.{$schema.name}`);
+      }
+    };
+    
+    return {
+      schema: schema,
+      assertConfig: assertConfig,
+      computeLabel: computeLabel,
+    }
+  }
+
   static getStubConfig() {
     return {
       title: ['Hello'],

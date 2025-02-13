@@ -72,7 +72,7 @@ export class AreaCard extends BaseCard {
     this.config = config;
   }
 
-  public static getConfigForm() {
+  public static async getConfigForm() {
     const schema = [
       { name: 'area', required: true, selector: { area: {} } },
       { name: "name", selector: { text: {} } },

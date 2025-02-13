@@ -128,7 +128,7 @@ export class EntityCard extends BaseCard {
     this.config = config;
   }
 
-  public static getConfigForm() {
+  public static async getConfigForm() {
     const schema = [
       { name: 'entity', required: true, selector: { entity: {} } },
       { name: "name", selector: { text: {} } },
