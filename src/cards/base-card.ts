@@ -2,7 +2,6 @@ import { LitElement, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
 import { HomeAssistant } from '../hass/types';
-import { LovelaceLayoutOptions } from '../hass/panels/lovelace/types';
 
 export class BaseCard extends LitElement {
   @property({ type: Object }) hass!: HomeAssistant;
@@ -28,7 +27,7 @@ export class BaseCard extends LitElement {
   }
 
   // The rules for sizing your card in the grid in sections view
-  getLayoutOptions(): LovelaceLayoutOptions {
+  getLayoutOptions(): object {
     return {
       grid_columns: 2.5,
       grid_min_columns: 2,

@@ -8,7 +8,7 @@ import type {
   LovelaceRawConfig,
 } from "../../data/lovelace/config/types";
 import type { FrontendLocaleData } from "../../data/translation";
-import type { Constructor, HomeAssistant } from "../../types";
+import type { HomeAssistant } from "../../types";
 import type { ShowToastParams } from "../../managers/notification-manager";
 
 declare global {

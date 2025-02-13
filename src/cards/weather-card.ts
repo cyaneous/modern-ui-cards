@@ -4,20 +4,9 @@ import { html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import { HomeAssistant } from '../hass/types';
-// import {
-//   getForecast,
-//   getSecondaryWeatherAttribute,
-//   getWeatherStateIcon,
-//   getWeatherUnit,
-//   getWind,
-//   subscribeForecast,
-//   weatherAttrIcons,
-//   weatherSVGStyles,
-// } from "../hass/data/weather";
 
 import { Helper } from '../helper';
 import { BaseCard } from './base-card';
-import { LovelaceLayoutOptions } from '../hass/panels/lovelace/types';
 
 export interface WeatherCardConfig {
   entity?: string;
@@ -91,7 +80,7 @@ export class WeatherCard extends BaseCard {
     `;
   }
 
-  getLayoutOptions(): LovelaceLayoutOptions {
+  getLayoutOptions(): object {
     return {
       grid_columns: 4,
       grid_min_columns: 4,

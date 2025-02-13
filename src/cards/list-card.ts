@@ -1,13 +1,11 @@
 import { css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-import { LovelaceLayoutOptions } from '../hass/panels/lovelace/types';
-
 import { ChipCard } from "./chip-card";
 
 @customElement('modern-list-card')
 export class ListCard extends ChipCard {
-  getLayoutOptions(): LovelaceLayoutOptions {
+  getLayoutOptions(): object {
     return {
       grid_columns: 'full',
       grid_rows: 1 * this.config.chips.length,

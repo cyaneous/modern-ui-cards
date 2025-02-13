@@ -2,7 +2,6 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import { HomeAssistant } from '../hass/types';
-import { LovelaceLayoutOptions } from '../hass/panels/lovelace/types';
 
 import { Helper } from '../helper';
 
@@ -58,7 +57,7 @@ export class HeaderCard extends LitElement {
   }
 
   // The rules for sizing your card in the grid in sections view
-  getLayoutOptions(): LovelaceLayoutOptions {
+  getLayoutOptions(): object {
     return {
       grid_columns: 'full',
       grid_rows: 12,
