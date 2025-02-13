@@ -1,5 +1,12 @@
 import { HassEntity } from "home-assistant-js-websocket";
-import { fireEvent } from "./hass/common/dom/fire_event";
+import { fireEvent } from "./hass/fire_event";
+
+declare global {
+  interface HASSDomEvents {
+    "hass-toggle-menu": undefined | { open?: boolean };
+    "hass-more-info": undefined | { entityId?: string, view?: "info" | "history" | "settings" | "related" };
+  }
+}
 
 export class Helper {
   static domain(entityId: string): string {

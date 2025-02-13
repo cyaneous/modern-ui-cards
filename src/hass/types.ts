@@ -1,4 +1,4 @@
-import type {
+import {
   Auth,
   Connection,
   HassConfig,
@@ -9,16 +9,55 @@ import type {
   MessageBase,
 } from 'home-assistant-js-websocket';
 
-import type { LocalizeFunc } from "./common/translations/localize";
-import type { AreaRegistryEntry } from "./data/area_registry";
-import type { DeviceRegistryEntry } from "./data/device_registry";
-import type { EntityRegistryDisplayEntry } from "./data/entity_registry";
-import type { FloorRegistryEntry } from "./data/floor_registry";
-import type { CoreFrontendUserData } from "./data/frontend";
-import type { FrontendLocaleData, TranslationCategory } from './data/translation';
-import type { Themes } from "./data/ws-themes";
+export interface EntityRegistryDisplayEntry {
+  entity_id: string;
+  name?: string;
+  device_id?: string;
+  area_id?: string;
+  hidden?: boolean;
+  entity_category?: 'config' | 'diagnostic';
+  translation_key?: string;
+  platform?: string;
+  display_precision?: number;
+}
 
-export type Constructor<T = any> = new (...args: any[]) => T;
+export interface DeviceRegistryEntry {
+  id: string;
+  config_entries: string[];
+  connections: Array<[string, string]>;
+  identifiers: Array<[string, string]>;
+  manufacturer: string | null;
+  model: string | null;
+  name: string | null;
+  sw_version: string | null;
+  hw_version: string | null;
+  via_device_id: string | null;
+  area_id: string | null;
+  name_by_user: string | null;
+  entry_type: 'service' | null;
+  disabled_by: 'user' | 'integration' | 'config_entry' | null;
+  configuration_url: string | null;
+}
+
+export interface AreaRegistryEntry {
+  aliases: string[];
+  area_id: string;
+  floor_id: string | null;
+  humidity_entity_id: string | null;
+  icon: string | null;
+  labels: string[];
+  name: string;
+  picture: string | null;
+  temperature_entity_id: string | null;
+}
+
+export interface FloorRegistryEntry {
+  floor_id: string;
+  name: string;
+  level: number | null;
+  icon: string | null;
+  aliases: string[];
+}
 
 export interface ThemeSettings {
   theme: string;
@@ -36,12 +75,15 @@ export interface PanelInfo<T = Record<string, any> | null> {
   icon: string | null;
   title: string | null;
   url_path: string;
-  config_panel_domain?: string;
 }
 
-export type Panels = Record<string, PanelInfo>;
+export interface Panels {
+  [name: string]: PanelInfo;
+}
 
-export type Resources = Record<string, Record<string, string>>;
+export interface Resources {
+  [language: string]: Record<string, string>;
+}
 
 export interface Translation {
   nativeName: string;
@@ -51,7 +93,9 @@ export interface Translation {
 
 export interface TranslationMetadata {
   fragments: string[];
-  translations: Record<string, Translation>;
+  translations: {
+    [lang: string]: Translation;
+  };
 }
 
 export interface Credential {
@@ -74,6 +118,13 @@ export interface CurrentUser {
   mfa_modules: MFAModule[];
 }
 
+export interface ServiceCallRequest {
+  domain: string;
+  service: string;
+  serviceData?: Record<string, any>;
+  target?: HassServiceTarget;
+}
+
 export interface Context {
   id: string;
   parent_id?: string;
@@ -83,14 +134,6 @@ export interface Context {
 export interface ServiceCallResponse {
   context: Context;
 }
-
-export interface ServiceCallRequest {
-  domain: string;
-  service: string;
-  serviceData?: Record<string, any>;
-  target?: HassServiceTarget;
-}
-
 export interface HomeAssistant {
   auth: Auth;
   connection: Connection;
@@ -127,7 +170,7 @@ export interface HomeAssistant {
   defaultPanel: string;
   moreInfoEntityId: string | null;
   user?: CurrentUser;
-  userData?: CoreFrontendUserData | null;
+  // userData?: CoreFrontendUserData | null;
   hassUrl(path?): string;
   callService(
     domain: ServiceCallRequest["domain"],
@@ -166,4 +209,104 @@ export interface HomeAssistant {
     value?: any
   ): string;
   formatEntityAttributeName(stateObj: HassEntity, attribute: string): string;
+}
+
+export enum NumberFormat {
+  language = 'language',
+  system = 'system',
+  comma_decimal = 'comma_decimal',
+  decimal_comma = 'decimal_comma',
+  space_comma = 'space_comma',
+  none = 'none',
+}
+
+export enum TimeFormat {
+  language = 'language',
+  system = 'system',
+  am_pm = '12',
+  twenty_four = '24',
+}
+
+export enum TimeZone {
+  local = 'local',
+  server = 'server',
+}
+
+export enum DateFormat {
+  language = 'language',
+  system = 'system',
+  DMY = 'DMY',
+  MDY = 'MDY',
+  YMD = 'YMD',
+}
+
+export enum FirstWeekday {
+  language = 'language',
+  monday = 'monday',
+  tuesday = 'tuesday',
+  wednesday = 'wednesday',
+  thursday = 'thursday',
+  friday = 'friday',
+  saturday = 'saturday',
+  sunday = 'sunday',
+}
+
+export interface FrontendLocaleData {
+  language: string;
+  number_format: NumberFormat;
+  time_format: TimeFormat;
+  date_format: DateFormat;
+  first_weekday: FirstWeekday;
+  time_zone: TimeZone;
+}
+
+declare global {
+  interface FrontendUserData {
+    language: FrontendLocaleData;
+  }
+}
+
+export type TranslationCategory =
+  | 'title'
+  | 'state'
+  | 'entity'
+  | 'entity_component'
+  | 'config'
+  | 'config_panel'
+  | 'options'
+  | 'device_automation'
+  | 'mfa_setup'
+  | 'system_health'
+  | 'device_class'
+  | 'application_credentials'
+  | 'issues'
+  | 'selector';
+
+export type LocalizeFunc = (key: string, ...args: any[]) => string;
+
+export interface ThemeVars {
+  // Incomplete
+  'primary-color': string;
+  'text-primary-color': string;
+  'accent-color': string;
+  [key: string]: string;
+}
+
+export type Theme = ThemeVars & {
+  modes?: {
+    light?: ThemeVars;
+    dark?: ThemeVars;
+  };
+};
+
+export interface Themes {
+  default_theme: string;
+  default_dark_theme: string | null;
+  themes: Record<string, Theme>;
+  // Currently effective dark mode. Will never be undefined. If user selected "auto"
+  // in theme picker, this property will still contain either true or false based on
+  // what has been determined via system preferences and support from the selected theme.
+  darkMode: boolean;
+  // Currently globally active theme name
+  theme: string;
 }
