@@ -4,7 +4,6 @@ import { html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import { HomeAssistant } from '../hass/types';
-import { LovelaceCardEditor, LovelaceLayoutOptions } from "../hass/panels/lovelace/types";
 // import {
 //   getForecast,
 //   getSecondaryWeatherAttribute,
@@ -18,7 +17,7 @@ import { LovelaceCardEditor, LovelaceLayoutOptions } from "../hass/panels/lovela
 
 import { Helper } from '../helper';
 import { BaseCard } from './base-card';
-export { WeatherCardEditor } from './weather-card-editor';
+import { LovelaceLayoutOptions } from '../hass/panels/lovelace/types';
 
 export interface WeatherCardConfig {
   entity?: string;
@@ -110,8 +109,26 @@ export class WeatherCard extends BaseCard {
     this.config = config;
   }
 
-  public static async getConfigElement(): Promise<LovelaceCardEditor> {
-    return document.createElement('modern-weather-card-editor') as LovelaceCardEditor;
+  public static async getConfigForm() {
+    const schema = [
+      { name: 'entity', selector: { entity: { domain: ['weather'] } } },
+    ];
+
+    const assertConfig = (config) => {
+
+    };
+
+    const computeLabel = (schema, localize) => {
+      switch (schema.name) {
+        default: return localize(`ui.panel.lovelace.editor.card.generic.{$schema.name}`);
+      }
+    };
+    
+    return {
+      schema: schema,
+      assertConfig: assertConfig,
+      computeLabel: computeLabel,
+    }
   }
 
   public static async getStubConfig(hass: HomeAssistant): Promise<WeatherCardConfig> {
@@ -120,66 +137,66 @@ export class WeatherCard extends BaseCard {
     };
   }
 
-    static get styles() {
-      return css`
-        @keyframes hoverIn {
-          0% {
-            transform: translateY(-20px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 1;
-          }
+  static get styles() {
+    return css`
+      @keyframes hoverIn {
+        0% {
+          transform: translateY(-20px);
+          opacity: 0;
         }
-        ha-card {
-          height: 100% !important;
-          padding: 16px;
-          cursor: pointer;
-          overflow: hidden;
-          animation: 250ms ease-out 0s 1 hoverIn;
-          border: none;
+        100% {
+          transform: translateX(0);
+          opacity: 1;
         }
-        ha-card:active {
-          filter: invert(1);
-          transition: none;
-        }
-        #content {
-          display: grid;
-          height: 100%;
-          grid-template:
-            'icon icon'
-            'name name'
-            'conditions conditions';
-          grid-template-columns: 1fr min-content;
-          grid-template-rows: 1fr min-content min-content;
-        }
-        #icon {
-          grid-area: icon;
-          --mdc-icon-size: 32px;
-        }
-        #name {
-        grid-area: name;
-        font-size: x-large;
-        font-weight: 500;
-        padding: 8px 0px;
-        border-top: 2px dotted var(--disabled-text-color);
-        border-bottom: 2px dotted var(--disabled-text-color);
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
       }
-      #conditions {
-        grid-area: conditions;
-        font-size: large;
-        line-height: large;
-        font-weight: 400;
-        padding-top: 8px;
-        color: var(--disabled-text-color);
-        text-overflow: ellipsis;
-        white-space: nowrap;
+      ha-card {
+        height: 100% !important;
+        padding: 16px;
+        cursor: pointer;
         overflow: hidden;
+        animation: 250ms ease-out 0s 1 hoverIn;
+        border: none;
       }
-      `;
+      ha-card:active {
+        filter: invert(1);
+        transition: none;
+      }
+      #content {
+        display: grid;
+        height: 100%;
+        grid-template:
+          'icon icon'
+          'name name'
+          'conditions conditions';
+        grid-template-columns: 1fr min-content;
+        grid-template-rows: 1fr min-content min-content;
+      }
+      #icon {
+        grid-area: icon;
+        --mdc-icon-size: 32px;
+      }
+      #name {
+      grid-area: name;
+      font-size: x-large;
+      font-weight: 500;
+      padding: 8px 0px;
+      border-top: 2px dotted var(--disabled-text-color);
+      border-bottom: 2px dotted var(--disabled-text-color);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
+    #conditions {
+      grid-area: conditions;
+      font-size: large;
+      line-height: large;
+      font-weight: 400;
+      padding-top: 8px;
+      color: var(--disabled-text-color);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    `;
+  }
 }

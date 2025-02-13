@@ -2,10 +2,9 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import { HomeAssistant } from '../hass/types';
-import { LovelaceCardEditor, LovelaceLayoutOptions } from "../hass/panels/lovelace/types";
 
 import { Helper } from '../helper';
-export { ChipCardEditor } from './chip-card-editor';
+import { LovelaceLayoutOptions } from '../hass/panels/lovelace/types';
 
 export interface ChipCardConfig {
   chips: ChipConfig[] | [];
@@ -18,6 +17,7 @@ interface ChipConfig {
 
 interface EntityChipConfig extends ChipConfig {
   entity?: string;
+  name?: string;
 }
 
 interface ActionChipConfig extends ChipConfig {
@@ -28,8 +28,8 @@ interface ActionChipConfig extends ChipConfig {
 
 @customElement('modern-chip-card')
 export class ChipCard extends LitElement {
-  @property({ type: Object }) private hass!: HomeAssistant;
-  @property({ type: Object }) private config!: ChipCardConfig;
+  @property({ type: Object }) protected hass!: HomeAssistant;
+  @property({ type: Object }) protected config!: ChipCardConfig;
 
   render() {
     return html`
@@ -56,7 +56,7 @@ export class ChipCard extends LitElement {
       case 'spacer':
         return this.renderSpacerChip();
       default:
-        return html`<span class="chip not-found">?</span>`;
+        return html`<div class="chip not-found">?</div>`;
     }
   }
 
@@ -67,9 +67,9 @@ export class ChipCard extends LitElement {
        return html`<span class="chip not-found">${chip.entity}</span>`;
 
     return html`
-      <span class="chip" style="cursor: default">
+      <div class="chip" style="cursor: default">
         ${this.statusForEntity(entity)}
-      </span>
+      </div>
     `;
   }
 
@@ -80,7 +80,7 @@ export class ChipCard extends LitElement {
        return html`<span class="chip not-found">${chip.entity}</span>`;
 
     return html`
-      <span class="chip" @click=${() => this.onEntityChipClicked(chip)}>
+      <div class="chip" @click=${() => this.onEntityChipClicked(chip)}>
         <ha-state-icon
           class="icon"
           .state=${entity}
@@ -88,48 +88,53 @@ export class ChipCard extends LitElement {
           .hass=${this.hass}
           ?data-domain=${Helper.domain(entity.entity_id)}
           ></ha-state-icon>
-        <span class="label">${this.statusForEntity(entity)}</span>
-      </span>
+        <span class="label">${this.nameForEntity(entity)}</span>
+        <span class="value">${this.statusForEntity(entity)}</span>
+      </div>
     `;
   }
 
   private renderActionChip(chip: ActionChipConfig) {
     return html`
-      <span class="chip" @click=${() => this.onActionChipClicked(chip)}>
+      <div class="chip" @click=${() => this.onActionChipClicked(chip)}>
         <ha-icon
           class="icon"
           icon=${chip.icon || 'mdi:star'}
         ></ha-icon>
-      </span>
+      </div>
     `;
   }
 
   private renderBackChip() {
     return html`
-      <span class="chip" @click=${() => history.back()}>
+      <div class="chip" @click=${() => history.back()}>
         <ha-icon 
           class="icon"
           icon="mdi:arrow-left"
         ></ha-icon>
-      </span>
+      </div>
     `;
   }
 
   private renderMenuChip() {
     return html`
-      <span class="chip" @click=${() => Helper.toggleMenu(this)}>
+      <div class="chip" @click=${() => Helper.toggleMenu(this)}>
         <ha-icon
           class="icon"
           icon="mdi:menu"
         ></ha-icon>
-      </span>
+      </div>
     `;
   }
 
   private renderSpacerChip() {
     return html`
-      <span class="chip spacer"></span>
+      <div class="chip spacer"></div>
     `;
+  }
+
+  private nameForEntity(entity) {
+    return entity.name || entity.attributes.friendly_name || entity.entity_id;
   }
 
   private statusForEntity(entity) {
@@ -189,8 +194,26 @@ export class ChipCard extends LitElement {
     };
   }
 
-  public static async getConfigElement(): Promise<LovelaceCardEditor> {
-    return document.createElement('modern-chip-card-editor') as LovelaceCardEditor;
+  public static getConfigForm() {
+    const schema = [
+      { name: 'statusbar', type: 'boolean' },
+    ];
+
+    const assertConfig = (config) => {
+
+    };
+
+    const computeLabel = (schema, localize) => {
+      switch (schema.name) {
+        default: return localize(`ui.panel.lovelace.editor.card.generic.{$schema.name}`);
+      }
+    };
+    
+    return {
+      schema: schema,
+      assertConfig: assertConfig,
+      computeLabel: computeLabel,
+    }
   }
 
   public static async getStubConfig(hass: HomeAssistant): Promise<ChipCardConfig> {
@@ -249,6 +272,9 @@ export class ChipCard extends LitElement {
         --mdc-icon-size: 24px;
       }
       .chip .label {
+        display: none;
+      }
+      .chip .value {
         margin-left: 4px;
         white-space: nowrap;
         text-overflow: ellipsis;

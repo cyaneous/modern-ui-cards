@@ -2,11 +2,9 @@ import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import { HomeAssistant } from '../hass/types';
-import { LovelaceCardEditor } from "../hass/panels/lovelace/types";
 
 import { Helper } from '../helper';
 import { BaseCard } from './base-card';
-export { AreaCardEditor } from './area-card-editor';
 
 export interface AreaCardConfig {
   area?: string;
@@ -74,8 +72,30 @@ export class AreaCard extends BaseCard {
     this.config = config;
   }
 
-  public static async getConfigElement(): Promise<LovelaceCardEditor> {
-    return document.createElement('modern-area-card-editor') as LovelaceCardEditor;
+  public static getConfigForm() {
+    const schema = [
+      { name: 'area', required: true, selector: { area: {} } },
+      { name: "name", selector: { text: {} } },
+      { name: 'path', required: true, selector: { navigation: {} } },
+      { name: 'temperature_sensor', selector: { entity: { domain: ['sensor'], filter: { device_class: ['temperature'] } } } },
+      { name: 'humidity_sensor', selector: { entity: { domain: ['sensor'], filter: { device_class: ['humidity'] } } } },
+    ];
+
+    const assertConfig = (config) => {
+
+    };
+
+    const computeLabel = (schema, localize) => {
+      switch (schema.name) {
+        default: return localize(`ui.panel.lovelace.editor.card.generic.{$schema.name}`);
+      }
+    };
+    
+    return {
+      schema: schema,
+      assertConfig: assertConfig,
+      computeLabel: computeLabel,
+    }
   }
 
   public static async getStubConfig(hass: HomeAssistant): Promise<AreaCardConfig> {
