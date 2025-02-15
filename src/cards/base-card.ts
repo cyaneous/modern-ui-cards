@@ -29,7 +29,7 @@ export class BaseCard extends LitElement {
   // The rules for sizing your card in the grid in sections view
   getLayoutOptions(): object {
     return {
-      grid_columns: 2.5,
+      grid_columns: 3,
       grid_min_columns: 2,
       grid_rows: 4,
       grid_min_rows: 3,

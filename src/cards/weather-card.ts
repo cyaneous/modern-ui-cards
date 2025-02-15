@@ -58,7 +58,7 @@ export class WeatherCard extends BaseCard {
 
   render() {
     return html`
-      <ha-card @click=${window.close}>
+      <ha-card @click=${this.onCardClicked}>
         <div id="content">
           <div id="icon">
             <!-- <ha-state-icon
@@ -82,12 +82,10 @@ export class WeatherCard extends BaseCard {
 
   getLayoutOptions(): object {
     return {
-      grid_columns: 4,
-      grid_min_columns: 4,
-      grid_max_columns: 4,
+      grid_columns: 3,
+      grid_min_columns: 2,
       grid_rows: 4,
-      grid_min_rows: 4,
-      grid_max_rows: 4,
+      grid_min_rows: 3,
     };
   }
 
