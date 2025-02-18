@@ -10,8 +10,6 @@ export interface AreaCardConfig {
   area?: string;
   name?: string;
   path?: string;
-  temperature_sensor?: string;
-  humidity_sensor?: string;
 }
 
 @customElement('modern-area-card')
@@ -27,14 +25,15 @@ export class AreaCard extends BaseCard {
   }
 
   get status() {
+    const area = this.hass.areas[this.config.area!];
     const status: string[] = [];
-    if (this.config.temperature_sensor && this.hass.states[this.config.temperature_sensor] != undefined) {
-      const entity = this.hass.states[this.config.temperature_sensor];
+    if (area.temperature_entity_id && this.hass.states[area.temperature_entity_id] != undefined) {
+      const entity = this.hass.states[area.temperature_entity_id];
       if (entity)
         status.push(this.hass.formatEntityState(entity));
     }
-    if (this.config.humidity_sensor && this.hass.states[this.config.humidity_sensor] != undefined) {
-      const entity = this.hass.states[this.config.humidity_sensor];
+    if (area.humidity_entity_id && this.hass.states[area.humidity_entity_id] != undefined) {
+      const entity = this.hass.states[area.humidity_entity_id];
       if (entity)
         status.push(this.hass.formatEntityState(entity));
     }
@@ -77,8 +76,6 @@ export class AreaCard extends BaseCard {
       { name: 'area', required: true, selector: { area: {} } },
       { name: "name", selector: { text: {} } },
       { name: 'path', required: true, selector: { navigation: {} } },
-      { name: 'temperature_sensor', selector: { entity: { domain: ['sensor'], filter: { device_class: ['temperature'] } } } },
-      { name: 'humidity_sensor', selector: { entity: { domain: ['sensor'], filter: { device_class: ['humidity'] } } } },
     ];
 
     const assertConfig = (config) => {
