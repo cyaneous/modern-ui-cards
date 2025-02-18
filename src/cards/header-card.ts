@@ -6,9 +6,9 @@ import { HomeAssistant } from '../hass/types';
 import { Helper } from '../helper';
 
 interface HeaderCardConfig {
-  title: string | '';
+  title?: string;
   title_entity?: string;
-  subtitle: string | '';
+  subtitle?: string;
   subtitle_entity?: string;
 }
 
