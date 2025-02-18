@@ -18,15 +18,6 @@ export class BaseCard extends LitElement {
     return 'var(--state-icon-color)';
   }
   
-  // Sizing
-
-  // The height of your card. Home Assistant uses this to automatically
-  // distribute all cards over the available columns.
-  getCardSize(): number {
-    return 2;
-  }
-
-  // The rules for sizing your card in the grid in sections view
   getLayoutOptions(): object {
     return {
       grid_columns: 3,

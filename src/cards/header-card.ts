@@ -42,21 +42,10 @@ export class HeaderCard extends LitElement {
     Helper.showMoreInfo(this, entityId);
   }
 
-  // Config
-
   setConfig(config) {
     this.config = config;
   }
 
-  // Sizing
-
-  // The height of your card. Home Assistant uses this to automatically
-  // distribute all cards over the available columns.
-  getCardSize() {
-    return 2;
-  }
-
-  // The rules for sizing your card in the grid in sections view
   getLayoutOptions(): object {
     return {
       grid_columns: 'full',

@@ -170,21 +170,10 @@ export class ChipCard extends LitElement {
     }
   }
 
-  // Config
-
   setConfig(config) {
     this.config = config;
   }
 
-  // Sizing
-
-  // The height of your card. Home Assistant uses this to automatically
-  // distribute all cards over the available columns.
-  getCardSize() {
-    return 1;
-  }
-
-  // The rules for sizing your card in the grid in sections view
   getLayoutOptions(): object {
     return {
       grid_columns: 'full',
