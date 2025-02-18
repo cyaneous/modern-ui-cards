@@ -17,9 +17,9 @@ export class HeaderCard extends LitElement {
   @property({ type: Object }) private hass?: HomeAssistant;
   @property({ type: Object }) private config?: HeaderCardConfig;
 
-  get title2() {
+  get title() {
     if (this.config?.title) return this.config.title;
-    else if (this.config?.title_entity) return this.hass?.states[this.config.title_entity].state;
+    else if (this.config?.title_entity) return this.hass?.states[this.config.title_entity].state || '';
     else return '';
   }
 
@@ -32,7 +32,7 @@ export class HeaderCard extends LitElement {
   render() {
     return html`
       <ha-card>
-        <div id="title">${this.title2}</div>
+        <div id="title">${this.title}</div>
         <div id="subtitle">${this.subtitle}</div>
       </ha-card>
     `;
