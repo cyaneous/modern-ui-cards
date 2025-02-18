@@ -6,26 +6,26 @@ import { HomeAssistant } from '../hass/types';
 import { Helper } from '../helper';
 
 interface HeaderCardConfig {
-  title?: string | '';
+  title: string | '';
   title_entity?: string;
-  subtitle?: string | '';
+  subtitle: string | '';
   subtitle_entity?: string;
 }
 
 @customElement('modern-header-card')
 export class HeaderCard extends LitElement {
-  @property({ type: Object }) private hass?: HomeAssistant;
-  @property({ type: Object }) private config?: HeaderCardConfig;
+  @property({ type: Object }) private hass!: HomeAssistant;
+  @property({ type: Object }) private config!: HeaderCardConfig;
 
   get title() {
-    if (this.config?.title) return this.config.title;
-    else if (this.config?.title_entity) return this.hass?.states[this.config.title_entity].state || '';
+    if (this.config.title) return this.config.title;
+    else if (this.config.title_entity) return this.hass.states[this.config.title_entity].state || '';
     else return '';
   }
 
   get subtitle() {
-    if (this.config?.subtitle) return this.config!.subtitle;
-    else if (this.config?.subtitle_entity) return this.hass?.states[this.config!.subtitle_entity].state;
+    if (this.config.subtitle) return this.config.subtitle;
+    else if (this.config.subtitle_entity) return this.hass.states[this.config.subtitle_entity].state;
     else return '';
   }
 
