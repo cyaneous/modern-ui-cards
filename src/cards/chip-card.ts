@@ -193,6 +193,7 @@ export class ChipCard extends LitElement {
 
     const computeLabel = (schema, localize) => {
       switch (schema.name) {
+        case 'statusbar': return 'Show as statusbar';
         default: return localize(`ui.panel.lovelace.editor.card.generic.{$schema.name}`);
       }
     };
