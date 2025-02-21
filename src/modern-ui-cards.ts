@@ -13,13 +13,6 @@ const w = window as any;
 w.customCards = w.customCards || [];
 
 w.customCards.push({
-  type: 'modern-status-bar',
-  name: 'Modern Status Bar',
-  preview: true,
-  description: 'A modern status bar card',
-});
-
-w.customCards.push({
   type: 'modern-header-card',
   name: 'Modern Header card',
   preview: true,

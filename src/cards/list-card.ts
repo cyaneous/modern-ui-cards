@@ -31,7 +31,6 @@ export class ListCard extends ChipCard {
         grid-template-columns: min-content 1fr min-content;
         grid-template-rows: 1fr;
         grid-gap: 16px;
-        height: 24px;
         overflow: hidden;
         font-size: medium;
         font-weight: 600;
@@ -39,7 +38,7 @@ export class ListCard extends ChipCard {
         border-top: 1px solid var(--disabled-text-color);
         background: var(--ha-card-background);
         align-items: center;
-        padding: 16px;
+        padding: 8px 16px;
         cursor: pointer;
       }
       .chip:first-child {

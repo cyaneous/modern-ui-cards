@@ -209,8 +209,8 @@ export class ChipCard extends LitElement {
       chips: [
         {
           type: 'entity',
-          entity: 'sun.sun',
-        } as EntityChipConfig
+          entity: Object.keys(hass.entities)[0],
+        } as EntityChipConfig,
       ],
       statusbar: false,
     };

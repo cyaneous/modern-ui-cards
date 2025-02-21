@@ -97,7 +97,7 @@ export class AreaCard extends BaseCard {
 
   public static async getStubConfig(hass: HomeAssistant): Promise<AreaCardConfig> {
     return {
-      area: 'kitchen',
+      area: Object.keys(hass.areas)[0],
     };
   }
 }

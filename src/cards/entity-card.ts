@@ -153,7 +153,7 @@ export class EntityCard extends BaseCard {
 
   public static async getStubConfig(hass: HomeAssistant): Promise<EntityCardConfig> {
     return {
-      entity: 'sun.sun',
+      entity: Object.keys(hass.entities)[0],
     };
   }
 }
