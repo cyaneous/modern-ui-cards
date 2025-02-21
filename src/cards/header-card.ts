@@ -38,10 +38,6 @@ export class HeaderCard extends LitElement {
     `;
   }
 
-  showMoreInfo(entityId) {
-    Helper.showMoreInfo(this, entityId);
-  }
-
   setConfig(config) {
     this.config = config;
   }
