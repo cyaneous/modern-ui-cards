@@ -5,7 +5,7 @@ export { EntityCard } from './cards/entity-card';
 export { ListCard } from './cards/list-card';
 export { WeatherCard } from './cards/weather-card';
 
-const MUI_VERSION = '0.3.1';
+const MUI_VERSION = '0.3.2';
 
 console.log(`Modern UI Cards v${MUI_VERSION} loaded.`);   
 
