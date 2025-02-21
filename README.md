@@ -58,6 +58,9 @@ chips:
 ### Header card
 
 ```yaml
+type: custom:modern-header-card
+title: Living Room # or use title_entity to use an entity
+subtitle_entity: sensor.system_status # or use subtitle to use a fixed string
 ```
 
 ### Area card
