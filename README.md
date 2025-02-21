@@ -84,7 +84,7 @@ entity: sensor.outdoor_temperature
 name: Custom Name # optional
 ```
 
-Note: by default, area prefix will be automatically removed from entities for you!
+Note: by default, area name prefix will be automatically removed from entity names for you!
 
 ### List card
 
