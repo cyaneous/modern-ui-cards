@@ -6,6 +6,8 @@
 
 This is an early version of a clean, modern custom card set for Home Assistant that is optimized for use with touch panels/tablets and uses a larger font. Intended to be used with the Graphite theme, though other themes should work fine too.
 
+The area card will use the new temperature and humidity sensors defined for the area under Settings > Areas in Home Assistant.
+
 The weather card is incomplete and UI configuration is not yet supported for the chip-based cards.
 
 ## Installation
