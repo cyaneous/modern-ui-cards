@@ -1,6 +1,12 @@
 # Modern UI Cards by [@lupinglade](https://github.com/cyaneous) 
 
-This is an early version of a clean, modern custom card set for Home Assistant that is optimized for use with touch panels/tablets. Intended to be used with the Graphite theme, though other themes should work fine too.
+![areas](screenshots/areas.png)
+![entities](screenshots/entities.png)
+![settings](screenshots/settings.png)
+
+This is an early version of a clean, modern custom card set for Home Assistant that is optimized for use with touch panels/tablets and uses a larger font. Intended to be used with the Graphite theme, though other themes should work fine too.
+
+The weather card is incomplete and UI configuration is not yet supported for the chip-based cards.
 
 ## Installation
 
