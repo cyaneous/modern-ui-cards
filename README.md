@@ -11,3 +11,86 @@ resources:
   url: /local/modern-ui-cards.js
   type: module
 ```
+
+## Examples
+
+### Status bar
+
+```yaml
+type: custom:modern-chip-card
+statusbar: true
+chips:
+  - type: message
+    entity: sensor.date_time_formatted
+  - type: entity
+    entity: sensor.outdoor_temperature
+  - type: entity
+    entity: sensor.outdoor_humidity
+  - type: entity
+    entity: sensor.wind_speed
+  - type: spacer
+  - type: entity
+    entity: sensor.indoor_temperature_average
+  - type: entity
+    entity: sensor.indoor_humidity_average
+  - type: entity
+    entity: sensor.main_watts
+```
+
+### Chip card
+
+```yaml
+type: custom:modern-chip-card
+chips:
+  - type: back
+  - type: entity
+    entity: sensor.eve_room_f86f_temperature
+  - type: entity
+    entity: sensor.eve_room_f86f_humidity
+  - type: entity
+    entity: sensor.eve_room_f86f_volatile_organic_compound_density
+  - type: action
+    action: navigate
+    url: ./settings
+    icon: mdi:cog
+```
+
+### Header card
+
+```yaml
+```
+
+### Area card
+
+```yaml
+type: custom:modern-area-card
+area: kitchen
+```
+
+### Entity card
+
+```yaml
+type: custom:modern-entity-card
+entity: sensor.outdoor_temperature
+name: Custom Name # optional
+```
+
+Note: by default, area prefix will be automatically removed from entities for you!
+
+### List card
+
+```yaml
+type: custom:modern-list-card
+chips:
+  - type: entity
+    entity: sensor.outdoor_temperature
+  - type: entity
+    entity: automation.smart_bath_lighting
+```
+
+### Weather card
+
+```yaml
+type: custom:modern-weather-card
+entity: weather.forecast_home
+```
