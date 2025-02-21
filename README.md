@@ -1,4 +1,4 @@
-# Modern UI Cards by [@lupinglade](https://github.com/cyaneous) 
+# Modern UI Cards
 
 ![areas](screenshots/areas.png)
 ![entities](screenshots/entities.png)
@@ -6,7 +6,9 @@
 
 This is an early version of a clean, modern custom card set for Home Assistant that is optimized for use with touch panels/tablets and uses a larger font. Intended to be used with the Graphite theme, though other themes should work fine too.
 
-The area card will use the new temperature and humidity sensors defined for the area under Settings > Areas in Home Assistant.
+The area card uses the new temperature and humidity sensors defined for the area under Settings > Areas in Home Assistant to display temperature and humidity sensor status under the area name.
+
+## Notes
 
 The weather card is incomplete and UI configuration is not yet supported for the chip-based cards.
 
