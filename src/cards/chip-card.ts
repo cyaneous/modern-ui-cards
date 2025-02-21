@@ -245,10 +245,10 @@ export class ChipCard extends LitElement {
       #chips:not([statusbar]) .chip {
         font-size: large;
         border-radius: 3vw;
-        background: var(--ha-card-background);
-        box-shadow: var(--ha-card-box-shadow);
         padding: 16px 16px;
         margin: 0px 4px;
+        background: var(--ha-card-background);
+        box-shadow: var(--ha-card-box-shadow);
       }
       #chips:not([statusbar]) .chip:first-child {
         margin-left: 0px;
@@ -257,7 +257,7 @@ export class ChipCard extends LitElement {
         filter: invert(1);
         transition: none;
       }
-      .chip .icon {
+      .chip .icon, ha-svg-icon {
         --mdc-icon-size: 24px;
       }
       .chip .label {
@@ -267,6 +267,7 @@ export class ChipCard extends LitElement {
         margin-left: 4px;
         white-space: nowrap;
         text-overflow: ellipsis;
+        vertical-align: middle;
       }
       .spacer {
         flex-grow: 1;
