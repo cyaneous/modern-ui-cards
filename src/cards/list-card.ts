@@ -14,10 +14,21 @@ export class ListCard extends ChipCard {
 
   static get styles() {
     return css`
+      @keyframes hoverIn {
+        0% {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
       ha-card {
         height: 100% !important;
         background: none;
         overflow: hidden;
+        animation: 250ms ease-out 0s 1 hoverIn;
       }
       #chips {
         height: 100%;

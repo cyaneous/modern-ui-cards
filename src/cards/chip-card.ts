@@ -262,6 +262,7 @@ export class ChipCard extends LitElement {
       }
       .chip .label {
         display: none;
+        vertical-align: middle;
       }
       .chip .value {
         margin-left: 4px;
