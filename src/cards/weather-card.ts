@@ -177,7 +177,7 @@ export class WeatherCard extends BaseCard {
       grid-area: conditions;
       font-size: large;
       line-height: large;
-      font-weight: 400;
+      font-weight: 500;
       padding-top: 8px;
       color: var(--disabled-text-color);
       text-overflow: ellipsis;

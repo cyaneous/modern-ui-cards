@@ -92,7 +92,7 @@ export class BaseCard extends LitElement {
         grid-area: status;
         font-size: large;
         line-height: large;
-        font-weight: 400;
+        font-weight: 500;
         padding-top: 8px;
         color: var(--disabled-text-color);
         text-overflow: ellipsis;

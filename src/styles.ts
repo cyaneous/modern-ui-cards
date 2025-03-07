@@ -63,7 +63,7 @@
 //   ha-card.button-card-main {
 //     padding: 4% 0px;
 //     text-transform: none;
-//     font-weight: 400;
+//     font-weight: 500;
 //     font-size: 1.2rem;
 //     align-items: center;
 //     text-align: center;
